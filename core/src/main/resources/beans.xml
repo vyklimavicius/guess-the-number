@@ -6,6 +6,17 @@
 
     <bean id="numberGenerator" class="com.klimavicius.NumberGeneratorImpl" />
 
+<!--    <bean id="game" class="com.klimavicius.GameImpl" /> // whole bean, general package-->
+
+<!--  Constructor injection  -->
+<!--    <bean id="game" class="com.klimavicius.GameImpl">-->
+<!--        <constructor-arg ref="numberGenerator" />-->
+<!--    </bean>-->
+
+    <bean id="game" class="com.klimavicius.GameImpl">
+      <property name="numberGenerator" ref="numberGenerator"/>
+    </bean>
+
 
 
 </beans>

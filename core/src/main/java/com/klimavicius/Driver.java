@@ -21,12 +21,19 @@ public class Driver {
 
         // Get the bean
         NumberGeneratorImpl numberGenerator = context.getBean("numberGenerator", NumberGeneratorImpl.class);
+//        GameImpl gameImpl = context.getBean("game", GameImpl.class);
 
         /* Call the method in the bean, the {} internally in f4j has a message formatter. So the {} gets replace by the var.
          This is call parametize logging, a good feature of slf4j
          */
         int num = numberGenerator.next();
         log.info("The random number is: {}", num);
+
+        // Get game bean from context with Interface and just the class
+        Game game = context.getBean(Game.class);
+
+        // Call reset method
+        game.reset();
 
         // close container, to prevent any memory leaks.
         context.close();
