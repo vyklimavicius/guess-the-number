@@ -2,11 +2,15 @@ package com.klimavicius;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component; // We don't need the annotation with bean configuration based with Java annotations
 
 public class GameImpl implements Game {
 
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
-    private NumberGeneratorImpl numberGenerator; //Composition
+
+    @Autowired
+    private NumberGenerator numberGenerator; //Composition
     private int guessCount = 10;
     private int number;
     private int guess;
@@ -63,6 +67,11 @@ public class GameImpl implements Game {
         biggest = numberGenerator.getMaxNumber();
         number = numberGenerator.next();
         log.debug("The number is {}", number);
+    }
+
+    @Override
+    public int getGuessCount() {
+        return guessCount;
     }
 
     @Override
